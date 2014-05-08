@@ -10,9 +10,9 @@
 	// Defaults
 	var pluginName = 'trackEvents',
 		defaults = {
-			dataAttr: 'track-event',
+			attrName: 'track-event',
 			addGA: true,
-			uid: 'UA-NNNNNN-N'
+			gaid: 'UA-NNNNNN-N'
 		};
 
 	// Plugin constructor
@@ -25,19 +25,22 @@
 	}
 
 	Plugin.prototype.init = function () {
+		var self = this;
+
 		// add GA code if not yet in DOM
 		if ( this.options.addGA === true && !window.ga) {
-			this.addGA();
+			this.addGA(self.options);
 		}
 
 		// on click send a tracking event based on element's data attributes
-		$(this.element).on('click', this.trackEvent);
-
-		// TODO: if social media like/share use their tracking code
+		$(this.element).on('click', function () {
+			self.trackEvent(self.options);
+		});
 	};
 
-	Plugin.prototype.addGA = function (i, s, o, g, r, a, m) {
-		var i = i || window,
+	Plugin.prototype.addGA = function (options, i, s, o, g, r, a, m) {
+		var options = options || {},
+			i = i || window,
 			s = s || document,
 			o = o || 'script',
 			g = g || '//www.google-analytics.com/analytics.js',
@@ -56,14 +59,22 @@
 		/**
 		 * Set up GA account and log pageview
 		 */
-		window.ga('create', this.options.uid);
+		window.ga('create', options.gaid);
 		window.ga('send', 'pageview');
 	};
 
-	Plugin.prototype.trackEvent = function () {
-		var $el = $(this),
+	Plugin.prototype.trackEvent = function (options) {
+		var $el = $(this.element),
 			url = $el.attr("href"),
-			data = $el.data(this.options.dataAttr).split(",");
+			data = $el.data(options.attrName);
+
+		// If the data attribute isn't present, stop
+		if ( !data ) {
+			return false;
+		}
+
+		// Turn the data string into an array
+		data = data.split(",");
 
 		// Trim whitespace from data
 		$.each(data, function (i) {
