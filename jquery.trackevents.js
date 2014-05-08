@@ -1,6 +1,6 @@
 /*
- *  Project: Track Events
- *  Description: Tracks events in Google Analytics based on the targeted element's data attribute
+ *  Project: Gerard Event Tracking
+ *  Description: Tracks events in Google Analytics based on data provided to the targeted element
  *  Author: Josh Lawrence
  *  License: MIT
  */
@@ -8,7 +8,7 @@
 ;(function($, window, document, undefined) {
 
 	// Defaults
-	var pluginName = 'trackEvents',
+	var pluginName = 'gerard',
 		defaults = {
 			attrName: 'track-event',
 			addGA: true,
