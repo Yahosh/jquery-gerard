@@ -1,4 +1,4 @@
-# jQuery Gerard - Simple Event Tracking
+# jQuery Gerard
 
 A simple plugin that allows you to track events in Google Analytics like you're Samuel Gerard.
 
