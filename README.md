@@ -1,6 +1,6 @@
 # jQuery Gerard - Simple Event Tracking
 
-A simple plugin that allows you to track events in Google Analytics by adding a data attribute to the element you want to track.
+A simple plugin that allows you to track events in Google Analytics like you're Samuel Gerard.
 
 ## Usage
 
