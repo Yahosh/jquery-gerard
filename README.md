@@ -1,6 +1,6 @@
 # jQuery Gerard
 
-A simple plugin that allows you to track events in Google Analytics like you're Samuel Gerard.
+A simple plugin that allows you to track events in Google Analytics from data attributes in your markup.
 
 ## Usage
 
@@ -15,7 +15,7 @@ First, you must include jQuery library in your `<head>` or just before the close
 ```
 
 ### Add data to your markup
-Next, go through your markup and add a `data-track-event` data-attribute to each element you would like to track. The value of the attribute should be a comma separated string that includes: `"category, action, label, value"`.
+Next, go through your markup and add a `data-track-event` data attribute to each element you would like to track. The value of the attribute should be a comma separated string that includes: `"category, action, label, value"`.
 
 ### Initialize the plugin
 Finally, you need to initialize the plugin to begin tracking events.
